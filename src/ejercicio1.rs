@@ -1,4 +1,4 @@
-use std::{collections::btree_map::Range, io};
+use std::{collections::{btree_map::Range, HashMap}, io};
 use rand::{rngs::OsRng, Rng};
 
 
@@ -28,7 +28,27 @@ for i in 0..numero {
     
 }
 
-println!("{:?}",lista);
+println!("Este es el vector {:?}",lista);
+
+let promedio:f64 = (lista.iter().sum::<i32>() as f64)/  (lista.len() as f64);
+
+println!("ESTE ES EL PROMEDIO:{}: ",promedio);
+
+let media= if lista.len()/2 ==0{
+    (lista[lista.len()/2 -1 ] + lista[lista.len()/2]) as f64 /2.0
+} else {
+    lista[lista.len()/2 ] as f64
+};
+println!("Este es la media {}: ",media);
+
+let media = lista.iter().fold(HashMap::new() , |mut acc ,&num|{
+    *acc.entry(num).or_insert(0)+=1;
+    acc
+}).iter().max_by_key(|&(_,&count)|count).map(|(&num, _)| num);
+
+println!("Este es la media {:?}", media);
+
+
 
 
 
