@@ -12,7 +12,9 @@ mod ejercicio10;
 
 
 fn main() {
-    ejercicio1::resolver();
+   // ejercicio1::resolver();
+   ejercicio2::resolver();
+   
     
     
 
